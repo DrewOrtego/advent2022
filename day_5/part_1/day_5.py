@@ -1,10 +1,13 @@
 from re import search
 from string import ascii_uppercase
 
-file_name = 'input.txt'
+file_name = 'test_input.txt'
 
 def get_crates():
-    """ Build data structure for the stacks of crates"""
+    """ 
+    Build data structure for the stacks of crates
+    ex: {1: ['N', 'Z'], 2: ['D', 'C', 'M'], 3: ['P']}
+    """
     crates = {}
     with open(file_name, 'r') as file_data:
         for line in file_data.readlines():
@@ -19,7 +22,10 @@ def get_crates():
     return crates
 
 def get_instructions():
-    """ Use Regex to get instructions on how to move crates"""
+    """
+    Use Regex to get instructions on how to move crates
+    ex: [[1, 2, 1], [3, 1, 3], [2, 2, 1], [1, 1, 2]]
+    """
     instructions = []
     exp = r'move ([0-9]) from ([0-9]) to ([0-9])'
 
@@ -50,6 +56,8 @@ def print_top_crates(crates):
 
 if __name__ == "__main__":
     crates = get_crates()
+    print(crates)
     instructions = get_instructions()
+    print(instructions)
     move_crates(crates, instructions)
     print_top_crates(crates)

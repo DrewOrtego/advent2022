@@ -1,7 +1,7 @@
 from re import search
 from string import ascii_uppercase
 
-file_name = 'test_input.txt'
+file_name = 'input.txt'
 
 def get_crates():
     """ 
@@ -27,7 +27,7 @@ def get_instructions():
     ex: [[1, 2, 1], [3, 1, 3], [2, 2, 1], [1, 1, 2]]
     """
     instructions = []
-    exp = r'move ([0-9]) from ([0-9]) to ([0-9])'
+    exp = r'move ([0-9]+) from ([0-9]+) to ([0-9]+)'
 
     with open(file_name, 'r') as file_data:
         for line in file_data.readlines():
@@ -37,7 +37,7 @@ def get_instructions():
 
     return instructions
 
-def move_crates(crates, instructions):
+def move_crates():
     for i in instructions:
         amount = i[0]
         source = i[1]
@@ -45,9 +45,9 @@ def move_crates(crates, instructions):
 
         for _ in range(amount):
             if crates[source]:
-                crates[destination].insert(0,crates[source].pop(0))
+                crates[destination].insert(0, crates[source].pop(0))
 
-def print_top_crates(crates):
+def print_top_crates():
     message = ''
     for n in range(1,len(crates)+1):
         if crates[n]:
@@ -57,5 +57,5 @@ def print_top_crates(crates):
 if __name__ == "__main__":
     crates = get_crates()
     instructions = get_instructions()
-    move_crates(crates, instructions)
-    print_top_crates(crates)
+    move_crates()
+    print_top_crates()

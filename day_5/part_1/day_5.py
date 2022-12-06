@@ -56,8 +56,6 @@ def print_top_crates(crates):
 
 if __name__ == "__main__":
     crates = get_crates()
-    print(crates)
     instructions = get_instructions()
-    print(instructions)
     move_crates(crates, instructions)
     print_top_crates(crates)
